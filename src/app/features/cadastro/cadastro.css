@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+    color: white;
+}
+
+.register-container {
+    background: #1b1b2a;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 320px;
+}
+
+input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0.7rem;
+    background: #00b3ff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+<div class="grid">
+    <div class="card" *ngFor="let game of games">
+  
+      <img [src]="game.background_image" />
+  
+      <h3>{{ game.name }}</h3>
+      <p>⭐ {{ game.rating }}</p>
+  
+      <button [routerLink]="['/game', game.id]">
+        Avaliar
+      </button>
+  
+    </div>
+  </div>

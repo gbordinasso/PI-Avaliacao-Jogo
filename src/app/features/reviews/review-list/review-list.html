@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>💬 Reviews dos Jogos</h1>
+
+  <div class="filter-box">
+    <input
+      type="text"
+      placeholder="Filtrar por Game ID..."
+      [(ngModel)]="gameFilter"
+      (input)="filterByGame()"
+    />
+  </div>
+
+  <div class="review-card" *ngFor="let review of filteredReviews">
+
+    <p><strong>🎮 Jogo ID:</strong> {{ review.gameId }}</p>
+
+    <p class="stars">
+      <span *ngFor="let star of getStars(review.rating)">⭐</span>
+    </p>
+
+    <p>{{ review.comment }}</p>
+
+    <div class="actions">
+
+      <button (click)="delete(review.id)">
+        🗑️ Excluir
+      </button>
+
+      <button
+        [routerLink]="['/review-form']"
+        [queryParams]="{ gameId: review.gameId, editId: review.id }">
+        ✏️ Editar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

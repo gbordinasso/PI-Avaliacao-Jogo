@@ -1,0 +1,17 @@
+<div class="form-container">
+
+    <h1>⭐ Avaliar Jogo</h1>
+  
+    <p>Game ID: {{ gameId }}</p>
+  
+    <label>Nota</label>
+    <input type="number" [(ngModel)]="rating" min="0" max="10" />
+  
+    <label>Comentário</label>
+    <textarea [(ngModel)]="comment"></textarea>
+  
+    <button (click)="submit()">
+      Enviar
+    </button>
+  
+  </div>

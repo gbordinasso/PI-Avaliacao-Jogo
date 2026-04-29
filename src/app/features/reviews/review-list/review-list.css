@@ -1,0 +1,96 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+    color: #fff;
+    padding: 2rem;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #00ffcc;
+    margin-bottom: 2rem;
+}
+
+.filter-box {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.filter-box input {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 300px;
+    background: #1b1b2a;
+    color: #fff;
+}
+
+.review-card {
+    background: #1b1b2a;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-left: 4px solid #00ffcc;
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+}
+
+.review-card p {
+    color: #ddd;
+}
+
+.review-card strong {
+    color: #00ffcc;
+}
+
+.stars {
+    color: gold;
+    font-size: 1.2rem;
+}
+
+.actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.actions button:first-child {
+    background: #ff3b3b;
+    color: #fff;
+}
+
+.actions button:first-child:hover {
+    background: #ff1f1f;
+    transform: scale(1.05);
+}
+
+.actions button:last-child {
+    background: #00ffcc;
+    color: #000;
+}
+
+.actions button:last-child:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}

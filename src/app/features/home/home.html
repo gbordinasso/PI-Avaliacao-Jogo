@@ -1,0 +1,42 @@
+<div class="home-container">
+
+  <h1>Jogos Disponíveis</h1>
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      placeholder="Buscar jogo..."
+      [(ngModel)]="searchText"
+      (input)="filterGames()"
+    />
+  
+    <button (click)="clearFilter()">
+      Limpar
+    </button>
+  
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    ⏳ Carregando jogos...
+  </div>
+
+  <div class="grid">
+
+    <div class="card" *ngFor="let game of games">
+
+      <img [src]="game.background_image || 'https://via.placeholder.com/300'" />
+
+      <h3>{{ game.name }}</h3>
+
+      <p>{{ game.rating || 0 }}</p>
+
+      <button [routerLink]="['/game', game.id]">
+        Avaliar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

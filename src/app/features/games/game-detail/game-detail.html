@@ -1,0 +1,30 @@
+<div class="detail-container" *ngIf="gameId">
+  
+  <div class="header">
+    <h1>🎮 Detalhe do Jogo</h1>
+    <p class="subtitle">ID: {{ gameId }}</p>
+  </div>
+
+  <div class="card">
+
+    <div class="info">
+      <h2>Jogo #{{ gameId }}</h2>
+
+      <p class="description">
+        Aqui você poderá ver detalhes do jogo, avaliações e deixar sua review.
+      </p>
+
+      <div class="actions">
+        <a class="btn-primary" [routerLink]="['/review-form', gameId]">
+          ⭐ Avaliar jogo
+        </a>
+
+        <a class="btn-primary" [routerLink]="['/reviews']">
+          Ver Reviews
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
