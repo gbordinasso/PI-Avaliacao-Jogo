@@ -15,6 +15,13 @@
       "cpf": "52998224725",
       "role": "user",
       "id": "4TQn3j65QN0"
+    },
+    {
+      "name": "Gustavo",
+      "email": "gustavo@gmail.com",
+      "password": "123gustavo",
+      "role": "user",
+      "id": "huLAjZ8vyBA"
     }
   ],
   "reviews": [],

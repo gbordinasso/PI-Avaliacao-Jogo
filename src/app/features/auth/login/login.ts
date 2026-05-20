@@ -11,6 +11,7 @@ import { AuthService } from '../../../core/services/auth.service';
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
+
 export class LoginComponent {
 
   email = '';
@@ -21,31 +22,51 @@ export class LoginComponent {
   constructor(
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   login() {
-    this.loading = true;
     this.error = '';
 
-    this.auth.login(this.email, this.password)
-      .subscribe({
-        next: (res: any) => {
+    if (!this.email || !this.password) {
+      this.error = 'Preencha todos os campos';
+      return;
+    }
 
-          this.loading = false;
+    if (!this.email.includes('@')) {
+      this.error = 'Email inválido';
+      return;
+    }
 
-          if (res.length > 0) {
-            localStorage.setItem('user', JSON.stringify(res[0]));
+    this.loading = true;
 
-            this.router.navigate(['/']);
-          } else {
-            this.error = 'Usuário ou senha inválidos';
-          }
+    this.auth.login(this.email, this.password).subscribe({
+      next: (res: any) => {
 
-        },
-        error: () => {
-          this.loading = false;
-          this.error = 'Erro no servidor';
+        this.loading = false;
+
+        if (res.length > 0) {
+          const user = res[0];
+
+          localStorage.setItem('user', JSON.stringify(res[0]));
+
+          this.email = '';
+          this.password = '';
+
+          this.router.navigate(['/']);
+        } else {
+          this.error = 'Email ou senha inválidos';
+          this.password = '';
         }
-      });
+
+      },
+      error: () => {
+        this.loading = false;
+        this.error = 'Erro ao conectar com o servidor';
+      }
+    });
+  }
+
+  cadastro() {
+    this.router.navigate(['/register']);
   }
 }

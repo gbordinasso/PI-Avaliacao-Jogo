@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,14 +16,23 @@ export class RegisterComponent {
   name = '';
   email = '';
   password = '';
-  cpf = '';
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   register() {
 
-    if (!this.validateCPF(this.cpf)) {
-      alert('CPF inválido');
+    if (!this.name || !this.email || !this.password) {
+      alert('Preencha todos os campos');
+      return;
+    }
+
+    if (!this.email.includes('@')) {
+      alert('Email inválido');
+      return;
+    }
+
+    if (this.password.length < 6) {
+      alert('A senha deve ter pelo menos 6 caracteres');
       return;
     }
 
@@ -30,40 +40,56 @@ export class RegisterComponent {
       name: this.name,
       email: this.email,
       password: this.password,
-      cpf: this.cpf,
       role: 'user'
     };
 
-    this.auth.register(user).subscribe(() => {
-      alert('Usuário cadastrado!');
+    this.auth.getUsers().subscribe({
+
+      next: (users: any[]) => {
+
+        const emailExists = users.some(
+          user => user.email === this.email
+        );
+
+        if (emailExists) {
+          alert('Este mail já está cadastrado');
+          return;
+        }
+
+        const user = {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          role: 'user'
+        };
+
+        this.auth.register(user).subscribe({
+
+          next: () => {
+
+            alert('Usuário cadastrado com sucesso!');
+
+            this.name = '';
+            this.email = '';
+            this.password = '';
+
+            this.router.navigate(['/login']);
+          },
+
+          error: () => {
+            alert('Erro ao cadastrar usuário');
+          }
+
+        });
+
+      },
+
+      error: () => {
+        alert('Erro ao verificar usuários');
+      }
+
     });
+    
   }
-
-  validateCPF(cpf: string): boolean {
-    cpf = cpf.replace(/\D/g, '');
-
-    if (cpf.length !== 11) return false;
-
-    if (/^(\d)\1+$/.test(cpf)) return false;
-
-    let sum = 0;
-    for (let i = 0; i < 9; i++) {
-      sum += parseInt(cpf[i]) * (10 - i);
-    }
-
-    let check1 = (sum * 10) % 11;
-    if (check1 === 10) check1 = 0;
-
-    if (check1 !== parseInt(cpf[9])) return false;
-
-    sum = 0;
-    for (let i = 0; i < 10; i++) {
-      sum += parseInt(cpf[i]) * (11 - i);
-    }
-
-    let check2 = (sum * 10) % 11;
-    if (check2 === 10) check2 = 0;
-
-    return check2 === parseInt(cpf[10]);
-  }
+  
 }

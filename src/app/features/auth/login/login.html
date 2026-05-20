@@ -2,18 +2,25 @@
 
     <h1>Login</h1>
 
+    <p class="subtitle">
+        Entre na sua conta para avaliar seus jogos favoritos
+    </p>
+
     <input type="email" placeholder="Email" [(ngModel)]="email" />
 
     <input type="password" placeholder="Senha" [(ngModel)]="password" />
 
     <button (click)="login()" [disabled]="loading">
-
         {{ loading ? 'Entrando...' : 'Entrar' }}
-
     </button>
 
     <p class="error" *ngIf="error">
         {{ error }}
+    </p>
+
+    <p class="register-link">
+        Não tem conta?
+        <a (click)="cadastro()">Cadastre-se</a>
     </p>
 
 </div>
