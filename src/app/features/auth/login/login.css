@@ -52,17 +52,17 @@ button {
     margin-top: 18px;
     border: none;
     border-radius: 10px;
-    background: #316157;
+    background: #00ffcc;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
     transition: 0.3s;
-    color: white;
+    color: #1b1b2a;
 }
 
 button:hover {
+    background: #00c59e;
     transform: scale(1.02);
-    background: #00ffcc;
 }
 
 button:disabled {

@@ -1,17 +1,43 @@
-<div class="form-container">
+<div class="page">
 
-    <h1>⭐ Avaliar Jogo</h1>
-  
-    <p>Game ID: {{ gameId }}</p>
-  
+  <div class="form-container">
+
+    <h1>
+      {{ editId ? 'Editar Review' : 'Avaliar Jogo' }}
+    </h1>
+
+    <p class="subtitle">
+      Compartilhe sua opinião com outros jogadores
+    </p>
+
+    <div class="game-id" *ngIf="gameId">
+      Jogo ID: <strong>{{ gameId }}</strong>
+    </div>
+
+    <div class="loading" *ngIf="pageLoading">
+      Carregando...
+    </div>
+
     <label>Nota</label>
-    <input type="number" [(ngModel)]="rating" min="0" max="10" />
-  
+
+    <input type="number" [(ngModel)]="rating" min="0" max="10" placeholder="Digite uma nota de 0 a 10" />
+
     <label>Comentário</label>
-    <textarea [(ngModel)]="comment"></textarea>
-  
-    <button (click)="submit()">
-      Enviar
+
+    <textarea [(ngModel)]="comment" rows="6" placeholder="Escreva sua opinião sobre o jogo..."></textarea>
+
+    <p class="error" *ngIf="error">
+      {{ error }}
+    </p>
+
+    <button (click)="submit()" [disabled]="saving || pageLoading">
+      {{ saving ? 'Salvando...' : (editId ? 'Atualizar Review' : 'Enviar Review') }}
     </button>
-  
+
+    <a class="back-link" [routerLink]="['/']">
+      Voltar para Home
+    </a>
+
   </div>
+
+</div>

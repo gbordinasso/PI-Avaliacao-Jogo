@@ -14,19 +14,20 @@ export class ReviewService {
     return this.http.get<any[]>(this.api);
   }
 
+  getReviewById(id: number) {
+    return this.http.get<any>(`${this.api}/${id}`);
+  }
+
   createReview(review: any) {
     return this.http.post(this.api, review);
+  }
+  
+  updateReview(id: number, review: any) {
+    return this.http.put(`${this.api}/${id}`, review);
   }
 
   deleteReview(id: number) {
     return this.http.delete(`${this.api}/${id}`);
   }
 
-  updateReview(id: number, review: any) {
-    return this.http.put(`${this.api}/${id}`, review);
-  }
-
-  getReviewById(id: number) {
-    return this.http.get<any>(`${this.api}/${id}`);
-  }
 }

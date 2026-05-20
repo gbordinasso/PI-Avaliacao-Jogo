@@ -1,29 +1,80 @@
-<div class="detail-container" *ngIf="gameId">
-  
-  <div class="header">
-    <h1>🎮 Detalhe do Jogo</h1>
-    <p class="subtitle">ID: {{ gameId }}</p>
+<div class="detail-container">
+
+  <div class="loading" *ngIf="loading">
+    Carregando detalhes do jogo...
   </div>
 
-  <div class="card">
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
 
-    <div class="info">
-      <h2>Jogo #{{ gameId }}</h2>
+  <div class="game-content" *ngIf="!loading && game">
 
-      <p class="description">
-        Aqui você poderá ver detalhes do jogo, avaliações e deixar sua review.
-      </p>
+    <section class="hero">
 
-      <div class="actions">
-        <a class="btn-primary" [routerLink]="['/review-form', gameId]">
-          ⭐ Avaliar jogo
-        </a>
+      <img class="banner" [src]="game.background_image || 'https://via.placeholder.com/900x400'" [alt]="game.name">
 
-        <a class="btn-primary" [routerLink]="['/reviews']">
-          Ver Reviews
-        </a>
+      <div class="hero-overlay">
+
+        <h1>{{ game.name }}</h1>
+
+        <p class="subtitle">
+          ⭐ {{ game.rating || 0 }} / 5
+          <span>•</span>
+          {{ game.released || 'Data não informada' }}
+        </p>
+
       </div>
-    </div>
+
+    </section>
+
+    <section class="info-card">
+
+      <div class="main-info">
+
+        <h2>Sobre o jogo</h2>
+
+        <p class="description" [innerHTML]="game.description || 'Descrição não disponível.'">
+        </p>
+
+      </div>
+
+      <div class="side-info">
+
+        <div class="info-box">
+          <strong>Gêneros</strong>
+          <p>{{ getGenres() }}</p>
+        </div>
+
+        <div class="info-box">
+          <strong>Plataformas</strong>
+          <p>{{ getPlatForms() }}</p>
+        </div>
+
+        <div class="info-box">
+          <strong>Avaliações RAWG</strong>
+          <p>{{ game.ratings_count || 0 }}</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="actions">
+
+      <a class="btn-primary" [routerLink]="['/review-form', game.id]">
+        Avaliar jogo
+      </a>
+
+      <a class="btn-secondary" [routerLink]="['/reviews']">
+        Ver Reviews
+      </a>
+
+      <a class="btn-secondary" [routerLink]="['/']">
+        Voltar para Home
+      </a>
+
+    </section>
 
   </div>
 

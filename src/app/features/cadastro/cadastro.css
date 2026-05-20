@@ -42,17 +42,17 @@ button {
     width: 100%;
     margin-top: 18px;
     padding: 0.9rem;
-    background: #316157;
+    background: #00ffcc;
     border: none;
     border-radius: 10px;
     font-weight: bold;
     font-size: 1rem;
     transition: 0.3s;
-    color: white;
+    color: #1b1b2a;
 }
 
 button:hover {
-    background: #00ffcc;
+    background: #00c59e;
     cursor: pointer;
     transform: scale(1.02);
 }

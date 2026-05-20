@@ -24,6 +24,47 @@
       "id": "huLAjZ8vyBA"
     }
   ],
-  "reviews": [],
+  "reviews": [
+    {
+      "gameId": "4291",
+      "gameName": "Counter-Strike: Global Offensive",
+      "gameImage": "https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
+      "rating": 9,
+      "comment": "Gostei muito do jogo, trocação de tiro muito forte. Única coisa que prejudica o jogo é a comunidade de resto excelente!",
+      "userName": "Gustavo",
+      "createdAt": "2026-05-20T23:03:47.618Z",
+      "id": "1100"
+    },
+    {
+      "gameId": "3498",
+      "gameName": "Grand Theft Auto V",
+      "gameImage": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
+      "rating": 7.5,
+      "comment": "Jogo bom até mas deixa a desejar nos gráficos.",
+      "userName": "Gustavo",
+      "createdAt": "2026-05-20T23:05:08.326Z",
+      "id": "158"
+    },
+    {
+      "gameId": "4200",
+      "gameName": "Portal 2",
+      "gameImage": "https://media.rawg.io/media/games/2ba/2bac0e87cf45e5b508f227d281c9252a.jpg",
+      "rating": 2.5,
+      "comment": "Não gostei porque o jogo não me agradou, comprei com uma expectativa e sai com outra.",
+      "userName": "Gustavo",
+      "createdAt": "2026-05-20T23:28:36.562Z",
+      "id": "5"
+    },
+    {
+      "id": "359b",
+      "gameId": "32",
+      "gameName": "Destiny 2",
+      "gameImage": "https://media.rawg.io/media/games/34b/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg",
+      "rating": 7,
+      "comment": "Jogo legal, tem uns pontos a ser melhorado.",
+      "userName": "teste",
+      "createdAt": "2026-05-20T23:32:25.687Z"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { GameService } from '../../core/services/game';
 
@@ -19,8 +20,9 @@ export class HomeComponent implements OnInit {
 
   searchText: string = '';
   loading: boolean = false;
+  error = '';
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.loadGames();
@@ -28,15 +30,19 @@ export class HomeComponent implements OnInit {
 
   loadGames(): void {
     this.loading = true;
+    this.error = '';
 
     this.gameService.getGames().subscribe({
       next: (res: any) => {
         this.games = res.results ?? res;
         this.allGames = this.games;
         this.loading = false;
+
+        this.cdr.detectChanges();
       },
       error: () => {
         this.loading = false;
+        this.error = 'Erro ao carregar jogos. Tente novamente.';
       }
     });
   }

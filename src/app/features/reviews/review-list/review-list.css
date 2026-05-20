@@ -3,94 +3,248 @@
     min-height: 100vh;
     background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
     color: #fff;
-    padding: 2rem;
-    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    max-width: 900px;
+.reviews-page {
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 2.5rem;
 }
 
-h1 {
+.hero {
     text-align: center;
-    color: #00ffcc;
     margin-bottom: 2rem;
+}
+
+.hero h1 {
+    color: #00ffcc;
+    font-size: 2.7rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #bdbdbd;
+    font-size: 1.05rem;
 }
 
 .filter-box {
-    text-align: center;
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 2.5rem;
 }
 
 .filter-box input {
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
+    width: 360px;
+    padding: 0.9rem;
+
     border: none;
+    border-radius: 10px;
+
     outline: none;
-    width: 300px;
+    box-sizing: border-box;
+
     background: #1b1b2a;
     color: #fff;
+
+    font-size: 1rem;
+}
+
+.filter-box input::placeholder {
+    color: #8f8f8f;
+}
+
+.filter-box button {
+    padding: 0.9rem 1.2rem;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #00ffcc;
+    color: #000;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.filter-box button:hover {
+    background: #00d9ad;
+    transform: scale(1.03);
+}
+
+.loading,
+.empty,
+.error {
+    text-align: center;
+    margin-top: 2rem;
+    color: #bdbdbd;
+}
+
+.error {
+    color: #ff4d4d;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 22px;
 }
 
 .review-card {
     background: #1b1b2a;
-    border-radius: 15px;
+    border-radius: 18px;
     padding: 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     border-left: 4px solid #00ffcc;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+
+    box-shadow:0 8px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 255, 204, 0.05);
+
     transition: 0.3s;
 }
 
 .review-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 0 35px rgba(0, 255, 204, 0.1);
 }
 
-.review-card p {
-    color: #ddd;
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
 }
 
-.review-card strong {
+.game-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.game-info img {
+    width: 82px;
+    height: 82px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(0, 255, 204, 0.15);
+}
+
+.game-info h3 {
     color: #00ffcc;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.game-id {
+    color: #8f8f8f;
+    margin: 5px 0;
+    font-size: 0.8rem;
+}
+
+.user {
+    color: #bdbdbd;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.rating-badge {
+    background: linear-gradient(90deg, #00ffcc, #00b3ff);
+    color: #000;
+
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .stars {
     color: gold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.comment {
+    color: #ddd;
+    line-height: 1.5;
+    font-style: italic;
+
+    flex: 1;
+}
+
+.date {
+    color: #8f8f8f;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
 }
 
 .actions {
-    margin-top: 1rem;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .actions button {
-    padding: 0.5rem 1rem;
+    flex: 1;
+
+    padding: 0.7rem 1rem;
+
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+
     cursor: pointer;
     font-weight: bold;
+
     transition: 0.3s;
 }
 
-.actions button:first-child {
+.delete {
     background: #ff3b3b;
     color: #fff;
 }
 
-.actions button:first-child:hover {
+.delete:hover {
     background: #ff1f1f;
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
-.actions button:last-child {
+.edit {
     background: #00ffcc;
     color: #000;
 }
 
-.actions button:last-child:hover {
-    transform: scale(1.05);
-    filter: brightness(1.2);
+.edit:hover {
+    background: #00d9ad;
+    transform: scale(1.04);
+}
+
+@media (max-width: 650px) {
+    .filter-box {
+        flex-direction: column;
+    }
+
+    .filter-box input,
+    .filter-box button {
+        width: 100%;
+    }
+
+    .review-header {
+        flex-direction: column;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
 }

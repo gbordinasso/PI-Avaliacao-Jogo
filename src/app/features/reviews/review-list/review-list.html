@@ -1,36 +1,90 @@
-<div class="container">
-  <h1>💬 Reviews dos Jogos</h1>
+<div class="reviews-page">
+
+  <section class="hero">
+    <h1>Reviews dos Jogos</h1>
+
+    <p>
+      Veja as opiniões dos jogadores e descubra quais jogos valem a pena.
+    </p>
+  </section>
 
   <div class="filter-box">
-    <input
-      type="text"
-      placeholder="Filtrar por Game ID..."
-      [(ngModel)]="gameFilter"
-      (input)="filterByGame()"
-    />
+
+    <input type="text" placeholder="Filtrar por nome ou ID do jogo..." [(ngModel)]="gameFilter"
+      (input)="filterByGame()" />
+
+    <button (click)="clearFilter()">
+      Limpar
+    </button>
+
   </div>
 
-  <div class="review-card" *ngFor="let review of filteredReviews">
+  <div class="loading" *ngIf="loading">
+    Carregando reviews...
+  </div>
 
-    <p><strong>🎮 Jogo ID:</strong> {{ review.gameId }}</p>
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
 
-    <p class="stars">
-      <span *ngFor="let star of getStars(review.rating)">⭐</span>
-    </p>
+  <div class="empty" *ngIf="!loading && filteredReviews.length === 0">
+    Nenhuma review encontrada.
+  </div>
 
-    <p>{{ review.comment }}</p>
+  <div class="reviews-grid" *ngIf="!loading && filteredReviews.length > 0">
 
-    <div class="actions">
+    <div class="review-card" *ngFor="let review of filteredReviews">
 
-      <button (click)="delete(review.id)">
-        🗑️ Excluir
-      </button>
+      <div class="review-header">
 
-      <button
-        [routerLink]="['/review-form']"
-        [queryParams]="{ gameId: review.gameId, editId: review.id }">
-        ✏️ Editar
-      </button>
+        <div class="game-info">
+
+          <img [src]="review.gameImage || 'https://via.placeholder.com/300'"
+            [alt]="review.gameName || 'Imagem do jogo'">
+
+          <div>
+            <h3>{{ review.gameName || 'Jogo não informado' }}</h3>
+
+            <p class="game-id">
+              ID: {{ review.gameId }}
+            </p>
+
+            <p class="user">
+              Por {{ review.userName || 'Usuário anônimo' }}
+            </p>
+          </div>
+
+        </div>
+
+        <span class="rating-badge">
+          ⭐ {{ review.rating }}/10
+        </span>
+
+      </div>
+
+      <p class="stars">
+        <span *ngFor="let star of getStars(review.rating)">⭐</span>
+      </p>
+
+      <p class="comment">
+        "{{ review.comment }}"
+      </p>
+
+      <p class="date">
+        Publicado em {{ formatDate(review.createdAt) }}
+      </p>
+
+      <div class="actions">
+
+        <button class="delete" (click)="delete(review)">
+          Excluir
+        </button>
+
+        <button class="edit" [routerLink]="['/review-form', review.gameId]" [queryParams]="{ editId: review.id }">
+          Editar
+        </button>
+
+      </div>
 
     </div>
 
