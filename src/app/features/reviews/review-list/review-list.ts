@@ -17,6 +17,8 @@ export class ReviewListComponent implements OnInit {
   reviews: any[] = [];
   filteredReviews: any[] = [];
 
+  loggedUser: any = null;
+
   gameFilter = '';
   loading = false;
   error = '';
@@ -24,7 +26,12 @@ export class ReviewListComponent implements OnInit {
   constructor(private reviewService: ReviewService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.loggedUser = JSON.parse(localStorage.getItem('user') || 'null');
     this.loadReviews();
+  }
+
+  canManageReview(review: any): boolean {
+    return this.loggedUser && String(review.userId) === String(this.loggedUser.id);
   }
 
   loadReviews(): void {
@@ -68,7 +75,15 @@ export class ReviewListComponent implements OnInit {
   }
 
   delete(review: any): void {
-    if (!confirm('Deseja excluir esta review?')) return;
+    if (!this.canManageReview(review)) {
+      alert('Você só pode excluir suas próprias reviews.');
+      return;
+    }
+
+    if (!confirm('Deseja excluir esta review?')) {
+      return;
+    }
+
 
     this.reviewService.deleteReview(review.id).subscribe({
       next: () => {

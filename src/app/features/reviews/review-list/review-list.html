@@ -74,7 +74,7 @@
         Publicado em {{ formatDate(review.createdAt) }}
       </p>
 
-      <div class="actions">
+      <div class="actions" *ngIf="canManageReview(review)">
 
         <button class="delete" (click)="delete(review)">
           Excluir

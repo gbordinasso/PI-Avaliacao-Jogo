@@ -1,24 +1,46 @@
 <header class="header">
 
-  <div class="logo" routerLink="/" style="cursor: pointer;">
+  <div class="logo" routerLink="/">
     GameReview
   </div>
 
   <nav class="nav">
 
-    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Home
+    </a>
 
     <a routerLink="/reviews" routerLinkActive="active">
       Avaliações
     </a>
 
-    <a routerLink="/login" routerLinkActive="active">
-      Login
-    </a>
+    <ng-container *ngIf="!user">
 
-    <a routerLink="/register" routerLinkActive="active">
-      Cadastro
-    </a>
+      <a routerLink="/login" routerLinkActive="active">
+        Login
+      </a>
+
+      <a routerLink="/register" routerLinkActive="active">
+        Cadastro
+      </a>
+
+    </ng-container>
+
+    <div class="user-menu" *ngIf="user">
+
+      <button class="user-button">
+        {{ user.name }} ▾
+      </button>
+
+      <div class="dropdown">
+
+        <button (click)="logout()">
+          Sair
+        </button>
+
+      </div>
+
+    </div>
 
   </nav>
 

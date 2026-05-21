@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,7 @@ export class LoginComponent {
   error = '';
   loading = false;
 
-  constructor(
-    private auth: AuthService,
-    private router: Router
-  ) { }
+  constructor(private auth: AuthService, private router: Router, private cdr: ChangeDetectorRef) { }
 
   login() {
     this.error = '';
@@ -47,15 +45,18 @@ export class LoginComponent {
         if (res.length > 0) {
           const user = res[0];
 
-          localStorage.setItem('user', JSON.stringify(res[0]));
+          localStorage.setItem('user', JSON.stringify(user));
 
           this.email = '';
           this.password = '';
 
           this.router.navigate(['/']);
+
         } else {
           this.error = 'Email ou senha inválidos';
           this.password = '';
+
+          this.cdr.detectChanges();
         }
 
       },

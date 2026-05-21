@@ -3,18 +3,9 @@
     {
       "id": "1",
       "name": "Admin",
-      "email": "admin@test.com",
+      "email": "admin@gmail.com",
       "password": "123456",
-      "cpf": "12345678909",
       "role": "admin"
-    },
-    {
-      "name": "teste",
-      "email": "teste@teste.com",
-      "password": "teste",
-      "cpf": "52998224725",
-      "role": "user",
-      "id": "4TQn3j65QN0"
     },
     {
       "name": "Gustavo",
@@ -22,48 +13,48 @@
       "password": "123gustavo",
       "role": "user",
       "id": "huLAjZ8vyBA"
+    },
+    {
+      "id": "3141",
+      "name": "Gabriel",
+      "email": "gabriel@gmail.com",
+      "password": "123gabriel",
+      "role": "user"
     }
   ],
   "reviews": [
     {
-      "gameId": "4291",
-      "gameName": "Counter-Strike: Global Offensive",
-      "gameImage": "https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
-      "rating": 9,
-      "comment": "Gostei muito do jogo, trocação de tiro muito forte. Única coisa que prejudica o jogo é a comunidade de resto excelente!",
-      "userName": "Gustavo",
-      "createdAt": "2026-05-20T23:03:47.618Z",
-      "id": "1100"
-    },
-    {
       "gameId": "3498",
       "gameName": "Grand Theft Auto V",
       "gameImage": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
-      "rating": 7.5,
-      "comment": "Jogo bom até mas deixa a desejar nos gráficos.",
+      "rating": 6.5,
+      "comment": "Jogo bom porém o gráfico deixou a desejar.",
+      "userId": "huLAjZ8vyBA",
       "userName": "Gustavo",
-      "createdAt": "2026-05-20T23:05:08.326Z",
-      "id": "158"
+      "createdAt": "2026-05-21T18:48:38.901Z",
+      "id": "361"
     },
     {
-      "gameId": "4200",
-      "gameName": "Portal 2",
-      "gameImage": "https://media.rawg.io/media/games/2ba/2bac0e87cf45e5b508f227d281c9252a.jpg",
-      "rating": 2.5,
-      "comment": "Não gostei porque o jogo não me agradou, comprei com uma expectativa e sai com outra.",
+      "id": "265",
+      "gameId": "4291",
+      "gameName": "Counter-Strike: Global Offensive",
+      "gameImage": "https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
+      "rating": 8,
+      "comment": "No geral o jogo é muito bom o único problema é a comunidade, muito tóxica.",
+      "userId": "huLAjZ8vyBA",
       "userName": "Gustavo",
-      "createdAt": "2026-05-20T23:28:36.562Z",
-      "id": "5"
+      "createdAt": "2026-05-21T18:49:51.768Z"
     },
     {
-      "id": "359b",
-      "gameId": "32",
-      "gameName": "Destiny 2",
-      "gameImage": "https://media.rawg.io/media/games/34b/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg",
-      "rating": 7,
-      "comment": "Jogo legal, tem uns pontos a ser melhorado.",
-      "userName": "teste",
-      "createdAt": "2026-05-20T23:32:25.687Z"
+      "id": "7823",
+      "gameId": "58175",
+      "gameName": "God of War (2018)",
+      "gameImage": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg",
+      "rating": 9,
+      "comment": "God of War consegue reinventar completamente a franquia sem perder sua essência. A evolução do Kratos, a relação com Atreus, a ambientação nórdica e o combate extremamente satisfatório tornam o jogo uma experiência incrível do início ao fim.",
+      "userId": "3141",
+      "userName": "Gabriel",
+      "createdAt": "2026-05-21T19:01:11.359Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

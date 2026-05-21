@@ -110,6 +110,14 @@ export class ReviewFormComponent implements OnInit {
   submit(): void {
     this.error = '';
 
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+    if (!user) {
+      this.error = 'Você precisa estar logado para enviar uma review.';
+      this.router.navigate(['/login']);
+      return;
+    }
+
     if (this.rating === null) {
       this.error = 'Informe uma nota.';
       return;
@@ -130,14 +138,13 @@ export class ReviewFormComponent implements OnInit {
       return;
     }
 
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-
     const data = {
       gameId: this.gameId,
       gameName: this.game?.name || this.reviewToEdit?.gameName,
       gameImage: this.game?.background_image || this.reviewToEdit?.gameImage,
       rating: this.rating,
       comment: this.comment.trim(),
+      userId: user.id,
       userName: this.reviewToEdit?.userName || user?.name || 'Usuário anônimo',
       createdAt: this.reviewToEdit?.createdAt || new Date().toISOString()
     };
