@@ -15,7 +15,7 @@ import { ChangeDetectorRef } from '@angular/core';
 
 export class GameDetailComponent implements OnInit {
 
-  gameId: number | null = null;
+  gameId: String | null = null;
   game: any = null;
 
   loading: boolean = false;
@@ -31,7 +31,7 @@ export class GameDetailComponent implements OnInit {
       return;
     }
 
-    this.gameId = Number(id);
+    this.gameId = id;
     this.loadGame();
   }
 

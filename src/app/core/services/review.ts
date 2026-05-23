@@ -14,7 +14,7 @@ export class ReviewService {
     return this.http.get<any[]>(this.api);
   }
 
-  getReviewById(id: number) {
+  getReviewById(id: String) {
     return this.http.get<any>(`${this.api}/${id}`);
   }
 
@@ -22,11 +22,11 @@ export class ReviewService {
     return this.http.post(this.api, review);
   }
   
-  updateReview(id: number, review: any) {
+  updateReview(id: String, review: any) {
     return this.http.put(`${this.api}/${id}`, review);
   }
 
-  deleteReview(id: number) {
+  deleteReview(id: String) {
     return this.http.delete(`${this.api}/${id}`);
   }
 

@@ -51,7 +51,7 @@ export class LoginComponent {
           this.password = '';
 
           this.router.navigate(['/']);
-
+          
         } else {
           this.error = 'Email ou senha inválidos';
           this.password = '';

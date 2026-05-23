@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Admin",
-      "email": "admin@gmail.com",
-      "password": "123456",
-      "role": "admin"
-    },
-    {
       "name": "Gustavo",
       "email": "gustavo@gmail.com",
       "password": "123gustavo",
@@ -55,6 +48,17 @@
       "userId": "3141",
       "userName": "Gabriel",
       "createdAt": "2026-05-21T19:01:11.359Z"
+    },
+    {
+      "gameId": "3439",
+      "gameName": "Life is Strange",
+      "gameImage": "https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg",
+      "rating": 4,
+      "comment": "Legal",
+      "userId": "huLAjZ8vyBA",
+      "userName": "Gustavo",
+      "createdAt": "2026-05-23T17:26:57.097Z",
+      "id": "735"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

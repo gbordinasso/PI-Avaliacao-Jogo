@@ -16,13 +16,13 @@ export class GameService {
     );
   }
 
-  searchGames(name: string) {
+  searchGames(name: String) {
     return this.http.get(
       `${this.apiUrl}/games?search=${name}&key=${this.apiKey}`
     );
   }
 
-  getGameById(id: number) {
+  getGameById(id: String) {
     return this.http.get(
       `${this.apiUrl}/games/${id}?key=${this.apiKey}`
     );

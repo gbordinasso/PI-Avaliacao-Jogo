@@ -95,7 +95,7 @@ export class ReviewFormComponent implements OnInit {
       return;
     }
 
-    this.gameService.getGameById(Number(this.gameId)).subscribe({
+    this.gameService.getGameById(this.gameId).subscribe({
       next: (res: any) => {
         this.game = res;
       },
@@ -152,7 +152,7 @@ export class ReviewFormComponent implements OnInit {
     this.saving = true;
 
     if (this.editId) {
-      this.reviewService.updateReview(Number(this.editId), data).subscribe({
+      this.reviewService.updateReview(this.editId, data).subscribe({
         next: () => {
           alert('Review atualizada com sucesso!');
           this.router.navigate(['/reviews']);
